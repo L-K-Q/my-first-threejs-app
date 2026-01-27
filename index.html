@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My First Three.js</title>
+    <style> body { margin: 0; } </style>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "../node_modules/three/build/three.module.js"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- 注意：这里 type="module" 非常重要，它让浏览器支持 import 语法 -->
+    <script type="module" src="./main.js"></script>
+    <!-- 这个 div 将用来承载坐标轴 -->
+    <div id="corner-container" style="position: absolute; width: 150px; height: 150px; bottom: 20px; right: 20px; pointer-events: none; z-index: 10;"></div>
+</body>
+</html>
