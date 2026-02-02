@@ -1,7 +1,7 @@
 // ui.js - 独立的 UI 交互模块
 import { scene, camera, controls, renderer, updateSceneWithGLB} from './main.js';
 
-const BACKEND_URL = "https://commander-prescribed-ontario-arthur.trycloudflare.com";
+const BACKEND_URL = "https://neck-mysql-chelsea-allow.trycloudflare.com";
 // 存储初始相机状态（等模型加载后再设置）
 let initialCameraState = null;
 
