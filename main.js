@@ -1,11 +1,27 @@
 // 1. 导入 Three.js
-import * as THREE from '../node_modules/three/build/three.module.js'
+/*import * as THREE from '../node_modules/three/build/three.module.js'
 
 //2. 初始化轨道控制插件
 import { OrbitControls } from '../node_modules/three/examples/jsm/controls/OrbitControls.js';
 
 //3.导入GLTF加载器
-import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';*/
+let THREE, OrbitControls, GLTFLoader;
+
+async function loadThreeJS() {
+  const [threeMod, orbitMod, gltfMod] = await Promise.all([
+    import('https://cdn.jsdelivr.net/npm/three@0.157.0/build/three.module.js'),
+    import('https://cdn.jsdelivr.net/npm/three@0.157.0/examples/jsm/controls/OrbitControls.js'),
+    import('https://cdn.jsdelivr.net/npm/three@0.157.0/examples/jsm/loaders/GLTFLoader.js')
+  ]);
+  THREE = threeMod;
+  OrbitControls = orbitMod.OrbitControls;
+  GLTFLoader = gltfMod.GLTFLoader;
+}
+
+// ========== 初始化场景（原逻辑封装）==========
+async function initScene() {
+  await loadThreeJS(); // 等待 Three.js 加载完成
 
 // 2. 初始化场景
 const scene = new THREE.Scene();
@@ -43,7 +59,7 @@ window.addEventListener('resize', () => {
 
 // ========== 模型路径映射 ==========
 const MODEL_PATHS = {
-  gear: '后端/临时文件/正齿轮.glb',
+  gear: 'backend/临时文件/正齿轮.glb',
   // cube: '后端/临时文件/立方体.glb',
   // sprocket: '后端/临时文件/链轮.glb'
 };
