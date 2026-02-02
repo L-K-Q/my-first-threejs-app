@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>My First Three.js</title>
-    <style> body { margin: 0; } </style>
+    <link rel="stylesheet" href="./style.css" />
     <script type="importmap">
     {
         "imports": {
@@ -13,9 +13,39 @@
     </script>
 </head>
 <body>
+    
+    <!-- 参数面板：初始隐藏，由 ui.js 控制显示 -->
+    <div id="param-panel" style="display: none;">
+        <div class="param-container">
+        <h4 id="param-title">⚙️ 零件参数</h4>
+        <div id="param-form"></div>
+        <button id="update-btn" class="ui-btn ui-btn-blue">🔄 更新模型</button>
+        </div>
+    </div>
+    <button id="voice-btn" class="control-btn">🎤 语音建模</button>
+    <!-- 承载坐标轴 -->
+    <div id="corner-container" 
+        style="position: absolute;
+        width: 150px;
+        height: 150px;
+        bottom: 20px;
+        right: 20px;
+        pointer-events: none;
+        z-index: 10;">
+    </div>
+    <!-- UI 元素（纯结构） -->
+    <div id="ui-controls">
+        <button id="reset-camera" class="ui-btn">重置相机</button>
+        <input
+            type="text"
+            id="speech-result"
+            placeholder="语音输入结果将显示在这里..."
+            spellcheck="false"
+        />
+    </div>
     <!-- 注意：这里 type="module" 非常重要，它让浏览器支持 import 语法 -->
     <script type="module" src="./main.js"></script>
-    <!-- 这个 div 将用来承载坐标轴 -->
-    <div id="corner-container" style="position: absolute; width: 150px; height: 150px; bottom: 20px; right: 20px; pointer-events: none; z-index: 10;"></div>
+    <!-- UI 交互逻辑（独立模块） -->
+    <script type="module" src="./ui.js"></script>
 </body>
 </html>
