@@ -4,7 +4,14 @@
 //const BACKEND_URL = "https://cartoon-flights-consist-providing.trycloudflare.com";
 function getBackendUrl() {
   const params = new URLSearchParams(window.location.search);
-  return params.get('backend') || 'https://cartoon-flights-consist-providing.trycloudflare.com';
+  const backendParam = params.get('backend');
+  // 如果有参数，返回它；否则返回默认值
+  if (backendParam) {
+    return backendParam;
+  } else {
+    console.warn('⚠️ 未指定后端地址，使用默认地址');
+    return 'https://cartoon-flights-consist-providing.trycloudflare.com'; // 你可以改成当前 Tunnel 地址
+  }
 }
 // 存储初始相机状态（等模型加载后再设置）
 let initialCameraState = null;
