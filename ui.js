@@ -1,7 +1,7 @@
 // ui.js - 独立的 UI 交互模块
 import { loadModelByType, updateSceneWithGLB } from './main.js';
 
-const BACKEND_URL = "https://tuition-extent-licence-pittsburgh.trycloudflare.com";
+const BACKEND_URL = window.BACKEND_URL;
 // 存储初始相机状态（等模型加载后再设置）
 let initialCameraState = null;
 
