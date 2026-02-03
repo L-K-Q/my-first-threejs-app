@@ -1,7 +1,8 @@
 // ui.js - 独立的 UI 交互模块
-import { loadModelByType, updateSceneWithGLB } from './main.js';
+//import { loadModelByType, updateSceneWithGLB } from './main.js';
 
-const BACKEND_URL = "https://cartoon-flights-consist-providing.trycloudflare.com";
+//const BACKEND_URL = "https://cartoon-flights-consist-providing.trycloudflare.com";
+const BACKEND_URL = window.BACKEND_URL || "https://cartoon-flights-consist-providing.trycloudflare.com";
 // 存储初始相机状态（等模型加载后再设置）
 let initialCameraState = null;
 
@@ -217,7 +218,7 @@ function initUI() {
             if(response.ok){
               // 使用后端返回的 base64 glb 数据更新场景
               const glbBytes = new Uint8Array(atob(data.glb_base64).split('').map(char => char.charCodeAt(0)));
-              updateSceneWithGLB(glbBytes);
+              window.updateSceneWithGLB(glbBytes);
             } else {
               console.error('模型生成失败:', data.message);
             }

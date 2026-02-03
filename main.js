@@ -235,6 +235,8 @@ function addCoordinateAxes(length) {
     }
   );
 }
+window.loadModelByType = loadModelByType;
+window.updateSceneWithGLB = updateSceneWithGLB;
 
 // ========== 初始加载（可选）==========
 // loadModelByType('gear'); // 如果需要默认加载
@@ -257,4 +259,4 @@ animate();
 initScene();
 
 // ✅ 只导出两个函数（它们在 initScene 内部被赋值）
-export { loadModelByType, updateSceneWithGLB };
+//export { loadModelByType, updateSceneWithGLB };

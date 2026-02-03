@@ -57,5 +57,11 @@
     <script type="module" src="./main.js"></script>
     <!-- UI 交互逻辑（独立模块） -->
     <script type="module" src="./ui.js"></script>
+    <!-- ✅ 新增：动态设置后端地址（放在所有 script 之后） -->
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      window.BACKEND_URL = params.get('backend') || 
+                           'https://cartoon-flights-consist-providing.trycloudflare.com';
+    </script>
 </body>
 </html>
