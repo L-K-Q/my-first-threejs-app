@@ -2,7 +2,10 @@
 //import { loadModelByType, updateSceneWithGLB } from './main.js';
 
 //const BACKEND_URL = "https://cartoon-flights-consist-providing.trycloudflare.com";
-const BACKEND_URL = window.BACKEND_URL || "https://cartoon-flights-consist-providing.trycloudflare.com";
+function getBackendUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('backend') || 'https://cartoon-flights-consist-providing.trycloudflare.com';
+}
 // 存储初始相机状态（等模型加载后再设置）
 let initialCameraState = null;
 
@@ -205,8 +208,9 @@ function initUI() {
           try {
             // 获取用户输入的完整文本（不是只传 partType）
             const userInput = speechInput.value.trim();
-
-            const response = await fetch(`${BACKEND_URL}/generate-model`, {
+            // 使用动态获取的后端 URL
+            const backendUrl = getBackendUrl();
+            const response = await fetch(`${backendUrl}/generate-model`, {
               method: 'POST',
               headers: { 
                 'Content-Type': 'application/json; charset=utf-8' // 👈 显式指定 UTF-8
