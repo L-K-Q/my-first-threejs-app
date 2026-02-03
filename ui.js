@@ -28,6 +28,15 @@ const PART_CONFIGS = {
   // 未来可加：
   // sprocket: { ...
 };
+// ✅ 新增工具函数（放在 ui.js 顶部）
+/*function base64ToUint8Array(base64) {
+  const binaryString = atob(base64);
+  const bytes = new Uint8Array(binaryString.length);
+  for (let i = 0; i < binaryString.length; i++) {
+    bytes[i] = binaryString.charCodeAt(i);
+  }
+  return bytes;
+}*/
 function startSpeechRecognition() {
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SpeechRecognition) {

@@ -18,6 +18,10 @@ async function loadThreeJS() {
   OrbitControls = orbitMod.OrbitControls;
   GLTFLoader = gltfMod.GLTFLoader;
 }
+// 定义两个全局函数（初始为 null）
+let loadModelByType = null;
+let updateSceneWithGLB = null;
+
 
 // ========== 初始化场景（原逻辑封装）==========
 async function initScene() {
@@ -109,7 +113,7 @@ function addCoordinateAxes(length) {
 }
 
 // ========== 核心：加载模型函数 ==========
-export function loadModelByType(modelType) {
+ loadModelByType=function (modelType) {
   const path = MODEL_PATHS[modelType];// 获取模型路径
   if (!path) {
     // 如果找不到对应模型路径，输出警告信息
@@ -175,7 +179,7 @@ export function loadModelByType(modelType) {
   );
 }
 // ========== 核心：从 Base64 GLB 动态加载模型 ==========
-export function updateSceneWithGLB(glbBytes) {
+ updateSceneWithGLB=function (glbBytes) {
   clearScene(); // 清除旧模型和坐标轴
 
   const loader = new GLTFLoader();
@@ -247,13 +251,10 @@ function animate() {
   renderer.render(scene, camera);
 }
 animate();
+}
 
-// ========== 导出 ==========
-export { 
-  scene, 
-  camera, 
-  controls, 
-  renderer, 
-  //loadModelByType,      // 可选保留
-  //updateSceneWithGLB    // ✅ 必须导出！
-};
+// 启动场景
+initScene();
+
+// ✅ 只导出两个函数（它们在 initScene 内部被赋值）
+export { loadModelByType, updateSceneWithGLB };
