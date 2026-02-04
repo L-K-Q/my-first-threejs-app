@@ -217,6 +217,7 @@ function initUI() {
             const userInput = speechInput.value.trim();
             // 使用动态获取的后端 URL
             const backendUrl = getBackendUrl();
+            console.log("🎯 后端地址:", backendUrl); // 👈 看看是不是 undefined！
             const response = await fetch(`${backendUrl}/generate-model`, {
               method: 'POST',
               headers: { 
