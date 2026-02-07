@@ -10,7 +10,7 @@ function getBackendUrl() {
     return backendParam;
   } else {
     console.warn('⚠️ 未指定后端地址，使用默认地址');
-    return 'https://improving-game-griffin-allow.trycloudflare.com'; // 你可以改成当前 Tunnel 地址
+    return 'https://scsi-shirts-decimal-php.trycloudflare.com'; // 你可以改成当前 Tunnel 地址
   }
 }
 // 存储初始相机状态（等模型加载后再设置）
